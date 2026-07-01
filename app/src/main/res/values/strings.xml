@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ad-Free-naline</string>
+
+    <string name="map_attribution_osm">© OpenStreetMap</string>
+    <string name="map_attribution_openfreemap">© OpenFreeMap © OpenMapTiles © OSM</string>
+    <string name="map_attribution_esri">© Esri, Maxar, Earthstar Geographics</string>
+
+    <string name="settings_data_licenses_title">Data &amp; licenses</string>
+    <string name="settings_map_data_title">Map data</string>
+    <string name="settings_map_data_body">Street maps use OpenFreeMap vector tiles (OpenStreetMap data). Optional satellite imagery uses Esri World Imagery raster tiles. Dark style switches the vector theme. No API keys required.</string>
+    <string name="settings_osm_attribution_title">OpenStreetMap</string>
+    <string name="settings_osm_attribution_body">© OpenStreetMap contributors. Map data is available under the Open Database License (ODbL).</string>
+    <string name="settings_openfreemap_attribution_title">OpenFreeMap</string>
+    <string name="settings_openfreemap_attribution_body">© OpenFreeMap © OpenMapTiles © OpenStreetMap contributors. Vector map tiles and styles served from tiles.openfreemap.org.</string>
+    <string name="settings_esri_attribution_title">Esri World Imagery</string>
+    <string name="settings_esri_attribution_body">© Esri, Maxar, Earthstar Geographics, and the GIS User Community. Satellite imagery is provided via Esri\'s public World Imagery tile service for normal application use.</string>
+    <string name="settings_open_license_page">Open license page</string>
+
+    <string name="url_osm_copyright">https://www.openstreetmap.org/copyright</string>
+    <string name="url_openfreemap">https://openfreemap.org</string>
+    <string name="url_esri_attribution">https://www.esri.com/en-us/legal/terms/full-master-agreement</string>
+
+    <string name="setting_dark_map_style">Dark map style</string>
+    <string name="setting_satellite_imagery">Satellite imagery</string>
+
+    <string name="calorie_disclaimer">Calorie estimates are approximate and not medical advice.</string>
+    <string name="onboarding_profile_explanation">Sex, age, and height are used to estimate calories burned during runs.</string>
+    <string name="calories_estimated_label">Calories (est.)</string>
+</resources>

@@ -1,0 +1,267 @@
+PRIVACY POLICY
+Ad-Free-naline
+
+Last updated: July 1, 2026
+
+This Privacy Policy applies to the Android application Ad-Free-naline (package
+name: com.luckierdev.adfreenaline). It describes how the App ("the App," "we,"
+"us") handles information when you use it.
+
+By using the App, you agree to the practices described in this policy. If you
+do not agree, please do not use the App.
+
+
+1. SUMMARY
+
+Ad-Free-naline is designed to work primarily on your device. We do not operate
+user accounts, cloud sync, or our own servers for your run data. The
+information you provide and the activity the App records are stored locally on
+your phone unless otherwise described below (for example, optional Android
+backup or map tile requests).
+
+
+2. INFORMATION WE COLLECT AND USE
+
+2.1 Location information
+- Precise GPS location while you are tracking a run or using map features.
+- Location is used to measure distance, pace, speed, display your position on
+  the map, draw your live route, and support route creation.
+- During an active run, location is processed in a foreground service so
+  tracking can continue while the App is in the background.
+- While a run is in progress, GPS coordinates are held in memory to draw your
+  live route. When you finish a run, the App saves summary statistics only (such
+  as distance and duration), not a stored GPS trace of the full path.
+- Custom routes you create and save store waypoint coordinates on your device.
+  These location records remain on your device unless you delete them or remove
+  the App's data.
+- Your GPS location is processed on your device and is never transmitted to our
+  servers.
+
+2.2 Health and fitness profile information
+You may provide information used to estimate calories and personalize the App:
+- Biological sex
+- Age
+- Height
+- Weight
+
+This information is used only for in-app calculations and display (such as
+estimated calories burned). Calorie estimates are approximate and are not
+medical advice.
+
+The App does not connect to Google Health Connect, Google Fit, or other health
+or medical services. Health and fitness information is entered manually by you
+and is used only for in-app calculations such as estimated calories burned.
+
+2.3 Run and activity history
+When you finish a run, the App stores summary data on your device, including:
+- Date and time of the run
+- Duration
+- Distance
+- Average pace and speed
+- Estimated calories
+- A country code derived from your location at the end of the run (via reverse
+  geocoding)
+
+2.4 Routes, challenges, and goals
+The App may store on your device:
+- Custom routes you create (name, category, color, and waypoint coordinates)
+- Challenge and streak progress
+- Distance and calorie goals
+- Goal alert preferences
+
+2.5 App settings and preferences
+The App stores settings such as:
+- Units (kilometers or miles)
+- Display preferences (dark mode, speed display, satellite map toggle)
+- Reminder notification preferences
+- Onboarding completion status
+- Battery saver and other in-app options
+
+2.6 Map cache
+To display maps, the App downloads and caches map tiles on your device. Cached
+tiles are stored locally and may include approximate map areas you have viewed.
+
+
+3. HOW WE USE YOUR INFORMATION
+
+We use the information described above to:
+- Track and display your runs in real time
+- Save and show your run history and statistics
+- Estimate calories burned
+- Let you create, save, and view custom routes
+- Show your position on maps
+- Send optional local run reminders (if you enable them)
+- Trigger optional goal alerts during runs
+
+We do not use your information for advertising, and we do not sell your
+personal information.
+
+
+4. WHERE YOUR DATA IS STORED
+
+Your run history, settings, routes, challenges, and related App data are stored
+locally on your device in a SQLite database (via Android Room) and related
+on-device files (such as map tile cache).
+
+You can export your run history to a CSV file from Settings at any time.
+
+We do not currently transmit your run history, fitness profile, or saved routes
+to our own servers.
+
+The App does not require you to create an account.
+
+
+5. THIRD-PARTY SERVICES
+
+The App uses the following third-party services and components. When you use
+these features, limited technical information (such as your device's IP address
+and map tile coordinates) may be sent to the relevant provider as part of
+normal network requests. We do not send your name, account credentials, stored
+run history, or fitness profile to these providers.
+
+5.1 Device location (GPS)
+The App uses Android's built-in LocationManager (via AndroidX LocationManagerCompat)
+to obtain GPS location on your device. Location is processed on-device; we do not
+send your GPS coordinates to our servers (there are no servers).
+
+5.2 OpenStreetMap / OpenFreeMap
+Standard map tiles are loaded from OpenFreeMap (OpenStreetMap-based data) via
+MapLibre. Map tile requests may reveal approximate map areas you view.
+OpenStreetMap Privacy Policy:
+  https://osmfoundation.org/wiki/Privacy_Policy
+
+5.3 Esri World Imagery (optional)
+If you enable satellite map view, the App loads imagery tiles from Esri's
+ArcGIS Online services. Tile requests may reveal approximate map areas you view.
+Esri Privacy Statement:
+  https://www.esri.com/en-us/privacy/privacy-statements/privacy-statement
+
+5.4 Android Geocoder
+When you finish a run, the App may use Android's built-in geocoding to derive
+a country code from your end-of-run location. Depending on your device and
+Android version, geocoding may be performed on-device or via a Google-backed
+service.
+
+5.5 Device backup
+The App disables Android's automatic cloud backup (allowBackup=false). Your App
+data is not uploaded to Google backup by default. To keep a copy of your run
+history when changing devices, use Settings → Export run history (CSV).
+
+
+6. ANALYTICS AND DIAGNOSTICS
+
+The App does not use analytics services and does not collect crash reports or
+diagnostic information.
+
+
+7. PERMISSIONS
+
+The App may request the following permissions:
+- Location (precise and approximate): required for GPS run tracking and maps
+- Internet: required to load map tiles and perform geocoding where supported by
+  the device
+- Notifications: for run tracking status and optional reminders
+- Foreground service (location): to continue tracking during an active run
+- Vibrate: for optional goal alert feedback
+
+You can deny or revoke permissions in your device settings. Some features will
+not work without location permission.
+
+
+8. DATA RETENTION AND DELETION
+
+Your data remains on your device until you delete it or uninstall the App.
+
+You can delete all App data at any time:
+  Settings → Delete all app data
+
+This removes your run history, saved routes, challenges, settings, and cached
+map data stored by the App, and resets the App to a fresh state.
+
+Uninstalling the App from your device will also remove locally stored App data,
+subject to any copies retained by Android backup or your device manufacturer.
+
+
+9. DATA SHARING
+
+We do not sell, rent, or trade your personal information.
+
+We do not disclose your stored run history, routes, or fitness profile to third
+parties for their own purposes.
+
+When you use map, location, or geocoding features, network requests are made
+directly from your device to the relevant third-party service providers. These
+requests may include technical information such as your device's IP address and
+requested map tiles as necessary to provide those services.
+
+
+10. CHILDREN'S PRIVACY
+
+The App is not directed at children under 13. The App asks for age during
+onboarding and is intended for users who are at least 13 years old. We do not
+knowingly collect personal information from children under 13. If you believe a
+child under 13 has provided information through the App, please contact us and
+we will work with you to address it (because we do not operate servers,
+deletion is typically accomplished by removing the App data on the device).
+
+
+11. SECURITY
+
+Because your data is stored on your device, its security also depends on your
+device's security (screen lock, operating system updates, and physical access).
+We recommend keeping your device updated and protected.
+
+The App relies on Android's standard application sandbox for local data storage.
+
+
+12. INTERNATIONAL USERS
+
+The App is operated without a centralized data store. Third-party services
+described in Section 5 may process requests according to their own privacy
+policies and may operate in various countries.
+
+
+13. CHANGES TO THIS POLICY
+
+We may update this Privacy Policy from time to time. When we do, we will revise
+the "Last updated" date at the top. If changes are material, we may provide
+additional notice within the App or on the page where this policy is hosted.
+Continued use of the App after an update means you accept the revised policy.
+
+
+14. YOUR RIGHTS
+
+Depending on where you live, you may have rights to access, correct, or delete
+personal information. Because the App stores data locally on your device and we
+do not maintain a central account system, you can review and delete your data
+directly in the App using Settings → Delete all app data, or by uninstalling
+the App.
+
+If you need help or have questions about your data, contact us using the
+information below.
+
+
+15. CONTACT US
+
+If you have questions about this Privacy Policy or the App's data practices,
+contact:
+
+  Ad-Free-naline Dev
+  luckierbusiness@gmail.com
+
+
+16. GOOGLE PLAY DATA SAFETY
+
+For Google Play, the App may process:
+- Precise location
+- Health and fitness profile information entered manually by the user
+- App activity, including run history and related fitness statistics
+
+This information is used solely for providing the App's functionality, is
+stored primarily on your device, is not sold, and is not shared with third
+parties for their own purposes, except where limited technical information is
+necessarily exchanged with map, location, geocoding, or Android backup providers
+as described in Section 5.
+
+Users can delete all locally stored App data at any time using Settings →
+Delete all app data or by uninstalling the App.
