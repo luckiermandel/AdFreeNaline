@@ -93,6 +93,118 @@ Debug APK output: `app/build/outputs/apk/debug/app-debug.apk`
 
 Release builds require a signing config (not set up in the repo yet). See `RELEASE_TODO.txt`.
 
+## Versioning
+
+When you ship an update, bump the app version in `app/build.gradle.kts` (`versionCode` and `versionName`) and tag the same release in git:
+
+```bash
+# Example: releasing 1.1
+# 1. Update versionCode / versionName in app/build.gradle.kts
+# 2. Commit, then tag:
+git tag v1.1
+git push origin v1.1
+```
+
+Keep the git tag in sync with `versionName` (e.g. `versionName = "1.1"` → tag `v1.1`). If you update the app but forget the tag, add or move the tag before pushing.
+
+## F-Droid distribution
+
+F-Droid does **not** use Google Play–style console uploads. They clone your public git repo, build the APK on their servers, and publish it on [f-droid.org](https://f-droid.org). Getting listed requires **two separate metadata steps** — do not skip either.
+
+### How the two pieces fit together
+
+| Where | What it is | What F-Droid uses it for |
+|-------|------------|--------------------------|
+| **Your repo** (`fastlane/metadata/…`) | Store text, icon, screenshots, changelogs | The **listing** users see on the F-Droid website and in the F-Droid client (name blurb, description, images) |
+| **[fdroiddata](https://gitlab.com/fdroid/fdroiddata)** (their GitLab repo) | One YAML file per app | The **build recipe** — where to clone, which git tag to check out, which Gradle command to run |
+
+Your Kotlin source is not “metadata.” Metadata is everything *about* the app that is not code: descriptions, images, version notes, and build instructions.
+
+**Yes, you need both:** fastlane files in your project for the store page, **and** a merge request to fdroiddata so their build farm knows how to compile your app.
+
+### 1. Store listing — in this repo
+
+Create these files (Fastlane folder layout; you do **not** need the Fastlane tool installed):
+
+```
+fastlane/metadata/android/en-US/
+  short_description.txt      # one line, max 80 chars, no trailing period
+  full_description.txt       # full store description (adapt from this README)
+  images/icon.png              # 512×512 app icon
+  images/phoneScreenshots/1.png
+  images/phoneScreenshots/2.png  # at least 2 real phone screenshots
+  changelogs/1.txt             # filename = versionCode; max 500 chars
+```
+
+Example `short_description.txt`:
+
+```
+Ad-free GPS run tracker with maps, stats, and route creator
+```
+
+Example `changelogs/1.txt` (for `versionCode = 1`):
+
+```
+Initial release: GPS run tracking, stats, route creator, CSV export.
+```
+
+On every release, add `changelogs/<versionCode>.txt` (e.g. `changelogs/2.txt` when `versionCode` becomes `2`).
+
+### 2. Build recipe — fdroiddata merge request
+
+This file lives in **F-Droid’s repo**, not yours. Fork [fdroiddata](https://gitlab.com/fdroid/fdroiddata), add `metadata/com.luckierdev.adfreenaline.yml`, and open a merge request titled `New App: com.luckierdev.adfreenaline`.
+
+Example YAML (replace placeholders with your real name, email, and repo URL):
+
+```yaml
+Categories:
+  - Sports & Health
+License: MIT
+AuthorName: YOUR_NAME
+AuthorEmail: your@email.com
+SourceCode: YOUR_REPO_URL
+IssueTracker: YOUR_REPO_URL/issues
+WebSite: YOUR_REPO_URL
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+
+Builds:
+  - versionName: '1.0'
+    versionCode: 1
+    commit: v1.0
+    subdir: .
+    gradle:
+      - :app:assembleRelease
+```
+
+- `commit` must match a **git tag** on your repo (`v1.0` for `versionName "1.0"`).
+- `versionCode` / `versionName` must match `app/build.gradle.kts` at that tag.
+- CI on the merge request must build green; then a human reviewer merges it. The app usually appears on f-droid.org within ~24–48 hours.
+
+For later releases, add a new `Builds:` entry (or rely on `AutoUpdateMode: Version` + `UpdateCheckMode: Tags` after the first inclusion).
+
+### F-Droid checklist (do not forget)
+
+**Before first submission**
+
+- [ ] Public git repo with full source pushed (no secrets, no keystores)
+- [ ] `LICENSE` in repo root (MIT)
+- [ ] `fastlane/metadata/android/en-US/` files created (listing text, icon, screenshots, changelog)
+- [ ] Release signing configured; `./gradlew assembleRelease` succeeds locally
+- [ ] Git tag pushed (e.g. `v1.0`) matching `versionName`
+- [ ] fdroiddata merge request submitted with YAML above
+- [ ] Manual device testing done (see `RELEASE_TODO.txt`)
+
+**On every release**
+
+- [ ] Bump `versionCode` and `versionName` in `app/build.gradle.kts`
+- [ ] Add `fastlane/.../changelogs/<versionCode>.txt`
+- [ ] Commit, tag (`v` + `versionName`), push branch and tag
+- [ ] Update fdroiddata `Builds:` entry if needed for the new version
+
+More detail: `FDROID_SUBMIT_CHECKLIST.txt` (step-by-step gate before GitLab), `TODO_VER_2.txt` (F-Droid guide), and `RELEASE_TODO.txt` (signing and testing).
+
 ## Tests
 
 Unit tests cover calorie math, CSV export, entity mapping, and map tile URLs. Instrumented tests cover Room DAOs, legacy prefs migration, and a basic launch smoke test.

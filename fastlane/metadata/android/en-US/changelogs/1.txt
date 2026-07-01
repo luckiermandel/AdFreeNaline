@@ -1,0 +1,1 @@
+Initial release: GPS run tracking, live map, stats, route creator, goals, CSV export, and local-only storage.

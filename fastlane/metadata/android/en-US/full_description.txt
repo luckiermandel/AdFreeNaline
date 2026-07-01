@@ -1,0 +1,24 @@
+Ad-Free-naline is a local-first Android run tracker. GPS records your runs, history stays on your device, and maps use free OpenStreetMap-based tile sources — no API keys and no ads.
+
+Run tracking
+• Start, pause, resume, and finish runs
+• Live distance, duration, pace, speed, and estimated calories
+• Foreground notification while a run is active
+• Active runs auto-resume after app restart (within 24 hours)
+
+Maps and routes
+• MapLibre vector maps via OpenFreeMap
+• Optional dark map style and satellite overlay
+• Tap the map to build and save custom routes
+
+Stats and goals
+• Summary cards, graphs, run streaks, and achievements
+• Per-run and weekly distance goals with optional alerts
+• Export run history to CSV
+
+Privacy
+• No accounts, cloud sync, or analytics
+• All data stored locally on your device
+• Delete all app data anytime in Settings
+
+Calorie estimates are approximate and not medical advice.
