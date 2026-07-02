@@ -10,3 +10,4 @@
 *.keystore
 signing.properties
 signing.env
+RELEASE_CHECKLIST.txt
