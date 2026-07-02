@@ -1,11 +1,13 @@
 package com.luckierdev.adfreenaline
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
@@ -82,6 +84,18 @@ class RunTrackingManager(
         }
     }
 
+    private fun hasLocationPermission(): Boolean {
+        val fine = ContextCompat.checkSelfPermission(
+            appContext,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+        val coarse = ContextCompat.checkSelfPermission(
+            appContext,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+        return fine || coarse
+    }
+
     fun updateSettings(value: RunSettings) {
         val oldSettings = settings
         settings = value
@@ -137,7 +151,7 @@ class RunTrackingManager(
         isPassiveWatching = false
         ensureRunChannel()
         showRunNotification(_stats.value)
-        if (!snapshot.isPaused) {
+        if (!snapshot.isPaused && hasLocationPermission()) {
             stopLocationUpdates()
             requestLocationUpdates()
             startLiveStatsTick()
@@ -147,6 +161,7 @@ class RunTrackingManager(
     @SuppressLint("MissingPermission")
     fun startRun() {
         if (_stats.value.isTracking) return
+        if (!hasLocationPermission()) return
         activeSessionRepository.clear()
         stopLocationUpdates()
         trackingStartMs = System.currentTimeMillis()
@@ -203,6 +218,7 @@ class RunTrackingManager(
 
     @SuppressLint("MissingPermission")
     fun startLocationWatch() {
+        if (!hasLocationPermission()) return
         fetchCurrentLocationImmediately()
         if (isPassiveWatching) return
         isPassiveWatching = true
@@ -211,6 +227,7 @@ class RunTrackingManager(
 
     @SuppressLint("MissingPermission")
     private fun fetchCurrentLocationImmediately() {
+        if (!hasLocationPermission()) return
         locationManager.getLastKnownLocation(locationProvider())?.let(::applyPassiveLocation)
         LocationManagerCompat.getCurrentLocation(
             locationManager,
@@ -224,6 +241,7 @@ class RunTrackingManager(
 
     @SuppressLint("MissingPermission")
     private fun seedCurrentLocation() {
+        if (!hasLocationPermission()) return
         locationManager.getLastKnownLocation(locationProvider())?.let(::applyPassiveLocation)
     }
 
@@ -264,6 +282,7 @@ class RunTrackingManager(
 
     @SuppressLint("MissingPermission")
     private fun requestLocationUpdates() {
+        if (!hasLocationPermission()) return
         LocationManagerCompat.requestLocationUpdates(
             locationManager,
             locationProvider(),

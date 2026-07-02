@@ -20,5 +20,6 @@ Privacy
 • No accounts, cloud sync, or analytics
 • All data stored locally on your device
 • Delete all app data anytime in Settings
+• Privacy policy: https://github.com/luckiermandel/AdFreeNaline/blob/main/PRIVACY_POLICY.txt
 
 Calorie estimates are approximate and not medical advice.

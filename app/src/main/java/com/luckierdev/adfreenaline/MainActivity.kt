@@ -506,9 +506,16 @@ private fun ColumnScope.TrackTab(
 ) {
     val settings by vm.settings.collectAsStateWithLifecycle()
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (!stats.isTracking) Button(onClick = vm::startRun, modifier = Modifier.weight(1f)) { Text("Start") }
-        else if (stats.isPaused) {
-            Button(onClick = vm::resumeRun, modifier = Modifier.weight(1f)) { Text("Resume") }
+        if (!stats.isTracking) {
+            Button(
+                onClick = { if (hasPermission) vm.startRun() else requestPermission() },
+                modifier = Modifier.weight(1f)
+            ) { Text("Start") }
+        } else if (stats.isPaused) {
+            Button(
+                onClick = { if (hasPermission) vm.resumeRun() else requestPermission() },
+                modifier = Modifier.weight(1f)
+            ) { Text("Resume") }
             Button(onClick = vm::stopRun, modifier = Modifier.weight(1f)) { Text("Stop") }
         } else {
             Button(onClick = vm::pauseRun, modifier = Modifier.weight(1f)) { Text("Pause") }

@@ -1,10 +1,3 @@
-# Copy this file to fdroiddata as:
-#   metadata/com.luckierdev.adfreenaline.yml
-# Fork: https://gitlab.com/fdroid/fdroiddata
-# Merge request title: New App: com.luckierdev.adfreenaline
-#
-# Replace AuthorEmail before submitting.
-
 Categories:
   - Sports & Health
 License: MIT
@@ -14,13 +7,19 @@ SourceCode: https://github.com/luckiermandel/AdFreeNaline
 IssueTracker: https://github.com/luckiermandel/AdFreeNaline/issues
 WebSite: https://github.com/luckiermandel/AdFreeNaline
 
+RepoType: git
+Repo: https://github.com/luckiermandel/AdFreeNaline
+
+MaintainerNotes: |-
+  Privacy policy: https://github.com/luckiermandel/AdFreeNaline/blob/main/PRIVACY_POLICY.txt
+
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
 
 Builds:
-  - versionName: '1.1'
-    versionCode: 2
-    commit: v1.1
+  - versionName: '1.2'
+    versionCode: 3
+    commit: v1.2
     subdir: .
     gradle:
       - :app:assembleRelease

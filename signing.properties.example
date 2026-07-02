@@ -1,0 +1,4 @@
+ADFREE_KEYSTORE_FILE=/home/YOU/.config/adfreenaline/keys/adfreenaline-release.jks
+ADFREE_KEYSTORE_PASSWORD=your_keystore_password
+ADFREE_KEY_ALIAS=adfreenaline
+ADFREE_KEY_PASSWORD=your_key_password

@@ -1,0 +1,1 @@
+Fixed GPS access before location permission is granted. Added privacy policy link. Release signing support and general stability improvements.

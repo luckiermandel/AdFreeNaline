@@ -1,8 +1,26 @@
+import java.io.File
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
 }
+
+val defaultKeystoreFile =
+    File(System.getProperty("user.home"), ".config/adfreenaline/keys/adfreenaline-release.jks")
+
+val userSigningPropertiesFile =
+    File(System.getProperty("user.home"), ".config/adfreenaline/signing.properties")
+
+val userSigningProperties = Properties()
+if (userSigningPropertiesFile.isFile) {
+    userSigningPropertiesFile.inputStream().use { userSigningProperties.load(it) }
+}
+
+fun signingCredential(name: String): String? =
+    System.getenv(name)?.takeIf { it.isNotBlank() }
+        ?: userSigningProperties.getProperty(name)?.takeIf { it.isNotBlank() }
 
 android {
     namespace = "com.luckierdev.adfreenaline"
@@ -12,14 +30,32 @@ android {
         applicationId = "com.luckierdev.adfreenaline"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 3
+        versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = signingCredential("ADFREE_KEYSTORE_FILE")
+            val keystoreFile = when {
+                !keystorePath.isNullOrBlank() -> file(keystorePath)
+                defaultKeystoreFile.isFile -> defaultKeystoreFile
+                else -> null
+            }
+            if (keystoreFile != null) {
+                storeFile = keystoreFile
+                storePassword = signingCredential("ADFREE_KEYSTORE_PASSWORD")
+                keyAlias = signingCredential("ADFREE_KEY_ALIAS")
+                keyPassword = signingCredential("ADFREE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
