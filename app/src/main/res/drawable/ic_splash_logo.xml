@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Splash icon: hexagon mark centered inside the splash mask circle. -->
+    <group
+        android:scaleX="0.55"
+        android:scaleY="0.55"
+        android:pivotX="54"
+        android:pivotY="54">
+        <path android:fillColor="#FF7043" android:pathData="M54,10L91,32v44L54,98L17,76V32z"/>
+        <path android:fillColor="#4FC3F7" android:pathData="M54,28L75,40v24L54,76L33,64V40z"/>
+    </group>
+</vector>

@@ -1,9 +1,18 @@
 # Ad-Free-naline
 
+[![CI](https://github.com/luckiermandel/AdFreeNaline/actions/workflows/ci.yml/badge.svg)](https://github.com/luckiermandel/AdFreeNaline/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A local-first Android run tracker built with Kotlin and Jetpack Compose. GPS tracks your runs, history stays on device, and maps use free tile sources (no API keys, no ads).
 
 **Package:** `com.luckierdev.adfreenaline`  
 **Min SDK:** 26 (Android 8.0)
+
+## Screenshots
+
+| Track | Stats | Settings |
+|-------|-------|----------|
+| ![Track](fastlane/metadata/android/en-US/images/phoneScreenshots/1.png) | ![Stats](fastlane/metadata/android/en-US/images/phoneScreenshots/2.png) | ![Settings](fastlane/metadata/android/en-US/images/phoneScreenshots/3.png) |
 
 ## Features
 
@@ -39,7 +48,7 @@ A local-first Android run tracker built with Kotlin and Jetpack Compose. GPS tra
 - Optional sound/vibration alerts when a goal is reached (custom notification sound supported)
 
 ### Settings
-- Dark mode, km/mi, battery-saver GPS mode
+- Theme: follow system, light, or dark; km/mi; battery-saver GPS mode
 - Health profile: sex, age, height, weight (used for calorie estimates)
 - Calorie goal per run
 - Optional daily streak reminders (three humorous notifications per day)
@@ -57,12 +66,14 @@ Calories burned are **estimates only**. The app uses a MET-based formula adjuste
 
 | Area | Libraries |
 |------|-----------|
-| UI | Jetpack Compose, Material 3 |
+| UI | Jetpack Compose, Material 3, core-splashscreen |
 | Architecture | ViewModel, Kotlin coroutines, StateFlow |
 | Location | Android `LocationManager` via `LocationManagerCompat` (no Google Play Services) |
 | Maps | MapLibre GL (`android-sdk-opengl`), OpenFreeMap styles, optional Esri raster tiles |
 | Persistence | Room (runs, routes, settings, active session) |
 | Utilities | osmdroid `GeoPoint` only (not used for map rendering) |
+
+Dependency versions live in the Gradle version catalog at [gradle/libs.versions.toml](gradle/libs.versions.toml). Room schemas are exported to `app/schemas/` and checked in so migrations can be validated.
 
 Legacy `SharedPreferences` data is migrated into Room on first launch after upgrade.
 
@@ -93,9 +104,13 @@ Debug APK output: `app/build/outputs/apk/debug/app-debug.apk`
 
 Release APKs use signing credentials outside the repo. Copy `signing.properties.example` to `~/.config/adfreenaline/signing.properties`, create a keystore, then run `./gradlew assembleRelease`. F-Droid builds and signs on their own servers, so local signing is only needed for distributing APKs yourself.
 
+### Continuous integration
+
+GitHub Actions runs unit tests, Android lint, and a debug build on every push and pull request ([.github/workflows/ci.yml](.github/workflows/ci.yml)).
+
 ## Tests
 
-Unit tests cover calorie math, CSV export, entity mapping, and map tile URLs. Instrumented tests cover Room DAOs, legacy prefs migration, and a basic launch smoke test.
+Unit tests cover calorie math, CSV export, entity mapping, map tile URLs, achievements/streak logic, goal-distance formatting, and run-session policies (50 m discard, 24 h restore). Instrumented tests cover Room DAOs, legacy prefs migration, and a basic launch smoke test.
 
 ## Data & privacy
 
@@ -109,4 +124,3 @@ Unit tests cover calorie math, CSV export, entity mapping, and map tile URLs. In
 - Custom challenges UI (schema exists in Room; no screen yet)
 - Social feed, segments, accounts, and cloud sync
 - Map matching and advanced pace smoothing
-- Dedicated notification icons (currently system drawables)

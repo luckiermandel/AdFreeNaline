@@ -33,8 +33,8 @@ import kotlinx.coroutines.sync.withLock
         ActiveSessionEntity::class,
         AppMetaEntity::class
     ],
-    version = 2,
-    exportSchema = false
+    version = 3,
+    exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -50,6 +50,18 @@ abstract class AppDatabase : RoomDatabase() {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL(
                     "ALTER TABLE app_settings ADD COLUMN satelliteImageryEnabled INTEGER NOT NULL DEFAULT 0"
+                )
+            }
+        }
+
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE app_settings ADD COLUMN themeMode TEXT NOT NULL DEFAULT 'SYSTEM'"
+                )
+                // Preserve an explicit previous dark/light preference.
+                db.execSQL(
+                    "UPDATE app_settings SET themeMode = CASE WHEN darkMode = 1 THEN 'DARK' ELSE 'LIGHT' END"
                 )
             }
         }
@@ -73,7 +85,7 @@ abstract class AppDatabase : RoomDatabase() {
                 context,
                 AppDatabase::class.java,
                 "adfreenaline.db"
-            ).addMigrations(MIGRATION_1_2).build()
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
         }
     }
 }

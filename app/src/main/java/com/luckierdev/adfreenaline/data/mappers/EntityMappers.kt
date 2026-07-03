@@ -33,7 +33,7 @@ fun RunRecord.toEntity() = RunEntity(
 )
 
 fun AppSettingsEntity.toRunSettings() = RunSettings(
-    darkMode = darkMode,
+    themeMode = themeMode,
     distanceUnit = distanceUnit,
     showSpeed = showSpeed,
     batterySaver = batterySaver,
@@ -57,7 +57,8 @@ fun AppSettingsEntity.toRunSettings() = RunSettings(
 
 fun RunSettings.toEntity(lastWeeklyGoalAlertKey: String? = null) = AppSettingsEntity(
     id = 1,
-    darkMode = darkMode,
+    darkMode = themeMode == com.luckierdev.adfreenaline.ThemeMode.DARK,
+    themeMode = themeMode,
     distanceUnit = distanceUnit,
     showSpeed = showSpeed,
     batterySaver = batterySaver,

@@ -11,10 +11,10 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@drawable/ic_launcher_geom"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RunTracker">
+        android:theme="@style/Theme.RunTracker.Starting">
         <activity
             android:name=".MainActivity"
             android:exported="true"

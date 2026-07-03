@@ -30,7 +30,6 @@ class RunViewModel(application: Application) : AndroidViewModel(application) {
     private val reminderScheduler = ReminderScheduler(application)
     private val routeRepository = RouteRepository(application)
     private val goalAlertController = GoalAlertController(application, settingsRepository)
-    private val challengeRepository = ChallengeRepository(application)
 
     val stats: StateFlow<RunStats> = manager.stats.stateIn(
         viewModelScope,
@@ -87,7 +86,7 @@ class RunViewModel(application: Application) : AndroidViewModel(application) {
         val final = stats.value
         manager.stopRun()
         manager.startLocationWatch()
-        if (final.distanceMeters >= 50.0) {
+        if (RunSessionPolicy.shouldSaveRun(final.distanceMeters)) {
             historyRepository.addRecord(
                 RunRecord(
                     timestampMs = System.currentTimeMillis(),
@@ -190,10 +189,9 @@ class RunViewModel(application: Application) : AndroidViewModel(application) {
             reminderScheduler.schedule(initialSettings.remindersEnabled)
 
             val snapshot = activeSessionRepository.load()
-            val maxAgeMs = 24 * 60 * 60 * 1000L
             if (snapshot != null && snapshot.isTracking) {
                 val ageMs = System.currentTimeMillis() - snapshot.trackingStartMs
-                if (ageMs in 0..maxAgeMs) {
+                if (RunSessionPolicy.shouldRestoreSession(ageMs)) {
                     manager.restoreRun(snapshot)
                 } else {
                     activeSessionRepository.clearSuspend()

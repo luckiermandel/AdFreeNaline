@@ -5,11 +5,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.luckierdev.adfreenaline.BiologicalSex
 import com.luckierdev.adfreenaline.DistanceUnit
+import com.luckierdev.adfreenaline.ThemeMode
 
 @Entity(tableName = "app_settings")
 data class AppSettingsEntity(
     @PrimaryKey val id: Int = 1,
+    // Legacy column kept for schema compatibility; superseded by themeMode.
     val darkMode: Boolean = true,
+    val themeMode: ThemeMode = ThemeMode.SYSTEM,
     val distanceUnit: DistanceUnit = DistanceUnit.KM,
     val showSpeed: Boolean = true,
     val batterySaver: Boolean = false,

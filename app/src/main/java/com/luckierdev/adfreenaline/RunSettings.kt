@@ -10,8 +10,14 @@ enum class BiologicalSex {
     FEMALE
 }
 
+enum class ThemeMode {
+    SYSTEM,
+    LIGHT,
+    DARK
+}
+
 data class RunSettings(
-    val darkMode: Boolean = true,
+    val themeMode: ThemeMode = ThemeMode.SYSTEM,
     val distanceUnit: DistanceUnit = DistanceUnit.KM,
     val showSpeed: Boolean = true,
     val batterySaver: Boolean = false,

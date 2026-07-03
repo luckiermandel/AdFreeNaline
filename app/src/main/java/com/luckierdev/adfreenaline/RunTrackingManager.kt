@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import org.osmdroid.util.GeoPoint
+import java.util.Locale
 
 private const val ACTIVE_SESSION_PERSIST_INTERVAL_MS = 15_000L
 
@@ -209,7 +210,7 @@ class RunTrackingManager(
         _stats.value = _stats.value.copy(isTracking = false, isPaused = false)
         lastLocation = null
         isPassiveWatching = false
-        notificationManager.cancel(7021)
+        notificationManager.cancel(RunForegroundService.NOTIFICATION_ID)
         appContext.startService(Intent(appContext, RunForegroundService::class.java).apply {
             action = RunForegroundService.ACTION_STOP
         })
@@ -232,9 +233,9 @@ class RunTrackingManager(
         LocationManagerCompat.getCurrentLocation(
             locationManager,
             locationProvider(),
-            null,
+            null as android.os.CancellationSignal?,
             locationExecutor
-        ) { location ->
+        ) { location: Location ->
             applyPassiveLocation(location)
         }
     }
@@ -375,8 +376,8 @@ class RunTrackingManager(
 
     private fun ensureRunChannel() {
         val channel = NotificationChannel(
-            "run_live_channel",
-            "Live Run",
+            RunForegroundService.CHANNEL_ID,
+            appContext.getString(R.string.channel_live_run),
             NotificationManager.IMPORTANCE_LOW
         )
         notificationManager.createNotificationChannel(channel)
@@ -385,8 +386,16 @@ class RunTrackingManager(
     private fun showRunNotification(stats: RunStats) {
         val distanceKm = stats.distanceMeters / 1000.0
         val duration = formatDuration(stats.durationMs)
-        val text = "${String.format("%.2f", distanceKm)} km | ${String.format("%.2f", stats.avgSpeedKmh)} km/h | ${stats.calories} kcal"
-        val title = if (stats.isPaused) "Run paused ($duration)" else "Run active ($duration)"
+        val text = appContext.getString(
+            R.string.notif_run_body,
+            "${String.format(Locale.US, "%.2f", distanceKm)} ${appContext.getString(R.string.unit_km)}",
+            "${String.format(Locale.US, "%.2f", stats.avgSpeedKmh)} ${appContext.getString(R.string.unit_kmh)}",
+            stats.calories
+        )
+        val title = appContext.getString(
+            if (stats.isPaused) R.string.notif_run_paused else R.string.notif_run_active,
+            duration
+        )
         val notification = buildRunNotification(title, text)
         ContextCompat.startForegroundService(
             appContext,
@@ -401,7 +410,7 @@ class RunTrackingManager(
 
     private fun buildRunNotification(title: String, text: String): Notification {
         return NotificationCompat.Builder(appContext, RunForegroundService.CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setSmallIcon(R.drawable.ic_stat_run)
             .setContentTitle(title)
             .setContentText(text)
             .setOngoing(true)

@@ -2,6 +2,276 @@
 <resources>
     <string name="app_name">Ad-Free-naline</string>
 
+    <!-- Tabs -->
+    <string name="tab_track">Track</string>
+    <string name="tab_creator">Creator</string>
+    <string name="tab_stats">Stats</string>
+    <string name="tab_routes">Routes</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Quick setup</string>
+    <string name="onboarding_body">Choose your profile, or skip.</string>
+    <string name="sex_male">Male</string>
+    <string name="sex_female">Female</string>
+    <string name="label_age">Age</string>
+    <string name="label_height_cm">Height cm</string>
+    <string name="action_save">Save</string>
+    <string name="action_skip">Skip</string>
+
+    <!-- Header -->
+    <string name="header_stats_line">Distance: %1$s | Duration: %2$s | %3$s: %4$d</string>
+    <string name="header_pace_line">Avg Pace: %1$s %2$s | Avg Speed: %3$s</string>
+    <string name="header_active_run">Run in progress</string>
+    <string name="label_distance_goals">Distance goals</string>
+    <string name="goal_label_run">Run</string>
+    <string name="goal_label_week">Week</string>
+    <string name="goal_label_this_run">This run</string>
+    <string name="goal_label_this_week">This week</string>
+    <string name="goal_reached">Goal reached</string>
+
+    <!-- Track -->
+    <string name="action_start">Start</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_resume">Resume</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_finish">Finish</string>
+
+    <!-- Creator -->
+    <string name="label_route_name">Route name</string>
+    <string name="label_category">Category</string>
+    <string name="action_update">Update</string>
+    <string name="action_clear">Clear</string>
+    <string name="label_waypoints">Waypoints</string>
+    <string name="waypoint_item">%1$d. waypoint</string>
+    <string name="action_move">Move</string>
+    <string name="action_delete">Delete</string>
+    <string name="default_route_name">My Route</string>
+    <string name="default_route_category">General</string>
+
+    <!-- Map -->
+    <string name="center_map">Center map on location</string>
+    <string name="map_loading">Loading map…</string>
+    <string name="permission_denied_overlay">Location denied\nTap to open Settings</string>
+    <string name="permission_missing_overlay">Location not enabled\nTap to allow</string>
+
+    <!-- Routes -->
+    <string name="route_categories">Route Categories</string>
+    <string name="back_to_categories">Back to categories</string>
+    <string name="no_saved_routes_title">No saved routes yet</string>
+    <string name="no_saved_routes_hint">Build a route in the Creator tab and save it to see it here.</string>
+    <string name="cd_edit_route">Edit route</string>
+    <string name="cd_delete_route">Delete route</string>
+    <string name="cd_delete_category">Delete category</string>
+
+    <!-- Stats -->
+    <string name="label_graph">Graph</string>
+    <string name="window_day">Day</string>
+    <string name="window_week">Week</string>
+    <string name="window_month">Month</string>
+    <string name="window_year">Year</string>
+    <string name="window_all">All</string>
+    <string name="metric_distance">Distance</string>
+    <string name="metric_duration">Duration</string>
+    <string name="metric_speed">Speed</string>
+    <string name="summary_today">Today</string>
+    <string name="summary_month">Month</string>
+    <string name="summary_year">Year</string>
+    <string name="summary_decade">Decade</string>
+    <string name="runs_count">%1$d runs</string>
+    <string name="group_today">Today</string>
+    <string name="group_last_week">Last week</string>
+    <string name="group_older">Older</string>
+    <string name="no_runs_title">No runs yet</string>
+    <string name="no_runs_hint">Finished runs will show up here.</string>
+    <string name="no_runs_in_group">No runs</string>
+    <string name="current_streak">Current streak: %1$d %2$s</string>
+    <string name="day_singular">day</string>
+    <string name="day_plural">days</string>
+    <string name="cd_streak_fire">Run streak</string>
+    <string name="label_achievements">Achievements</string>
+    <string name="achievement_progress">Progress: %1$s/%2$s %3$s</string>
+    <string name="cd_achievement_unlocked">Unlocked</string>
+    <string name="cd_achievement_locked">Locked</string>
+
+    <!-- Achievement names and descriptions -->
+    <string name="ach_first_name">First Run</string>
+    <string name="ach_first_desc">Finish your first tracked run.</string>
+    <string name="ach_5k_name">5K Finisher</string>
+    <string name="ach_5k_desc">Run 5km in a single session.</string>
+    <string name="ach_10k_name">10K Hero</string>
+    <string name="ach_10k_desc">Run 10km in a single session.</string>
+    <string name="ach_speed_name">Speed Demon</string>
+    <string name="ach_speed_desc">Hit sub 5:00 min/km pace.</string>
+    <string name="ach_distance_name">Century Club</string>
+    <string name="ach_distance_desc">Accumulate 100km total.</string>
+    <string name="ach_streak_name">Streak Keeper</string>
+    <string name="ach_streak_desc">Run 3 days in a row.</string>
+    <string name="ach_night_name">Night Owl</string>
+    <string name="ach_night_desc">Log a run after 10 PM.</string>
+    <string name="ach_early_name">Sunrise Sprinter</string>
+    <string name="ach_early_desc">Log a run before 6 AM.</string>
+    <string name="ach_marathon_name">Marathon Mindset</string>
+    <string name="ach_marathon_desc">Accumulate 42.2km.</string>
+    <string name="ach_fifty_name">Half-Century</string>
+    <string name="ach_fifty_desc">Accumulate 50km total.</string>
+    <string name="ach_calburn_name">Bonfire</string>
+    <string name="ach_calburn_desc">Burn 500+ calories in one run.</string>
+    <string name="ach_volcano_name">Volcano Legs</string>
+    <string name="ach_volcano_desc">Burn 2,000 total calories.</string>
+    <string name="ach_clockwork_name">Clockwork Runner</string>
+    <string name="ach_clockwork_desc">Run 3+ times in the same hour slot.</string>
+    <string name="ach_ultra_name">Weekend Ultra Brain</string>
+    <string name="ach_ultra_desc">Complete two 90+ minute runs.</string>
+    <string name="ach_warp_name">Warp Drive Ankles</string>
+    <string name="ach_warp_desc">Log 5 runs averaging 12+ km/h.</string>
+    <string name="ach_ghost_name">Ghost Runner</string>
+    <string name="ach_ghost_desc">Run at 3 AM like a cryptid.</string>
+    <string name="ach_gremlin_name">Treadmill Gremlin</string>
+    <string name="ach_gremlin_desc">Do 7 runs in 7 days.</string>
+    <string name="ach_orbit_name">Orbital Jogger</string>
+    <string name="ach_orbit_desc">Accumulate 250km total.</string>
+    <string name="ach_dragon_name">Dragon Breath</string>
+    <string name="ach_dragon_desc">Burn 1,000 calories in one run.</string>
+    <string name="ach_owlstack_name">Double Owl</string>
+    <string name="ach_owlstack_desc">Log 4 late-night runs.</string>
+    <string name="ach_rain_name">Rain Goblin</string>
+    <string name="ach_rain_desc">Do 6 runs in deep-night hours.</string>
+    <string name="ach_boomerang_name">Boomerang Runner</string>
+    <string name="ach_boomerang_desc">Run twice in one day, 3 times.</string>
+    <string name="ach_chaos_name">Chaotic Neutral Cardio</string>
+    <string name="ach_chaos_desc">Run once in every daypart.</string>
+    <string name="ach_collector_name">Mileage Collector</string>
+    <string name="ach_collector_desc">Accumulate 500km total.</string>
+    <string name="ach_atlas_name">Atlas Ankles</string>
+    <string name="ach_atlas_desc">Accumulate 1,000km total.</string>
+    <string name="ach_worldly_name">Worldly Runner</string>
+    <string name="ach_worldly_desc">Run in 2 different countries.</string>
+    <string name="ach_passport_name">Sneaker Passport</string>
+    <string name="ach_passport_desc">Run in 4 different countries.</string>
+    <string name="ach_daily_name">No-Skip Engine</string>
+    <string name="ach_daily_desc">Keep a 10-day streak.</string>
+    <string name="ach_iron_name">Iron Rhythm</string>
+    <string name="ach_iron_desc">Hit a 30-day best streak.</string>
+    <string name="ach_steady_name">Steady Feet</string>
+    <string name="ach_steady_desc">Log 20 runs in the last 30 days.</string>
+    <string name="ach_metronome_name">Metronome Mode</string>
+    <string name="ach_metronome_desc">Log 25 runs in the last 30 days.</string>
+    <string name="ach_month100_name">Monthly Beast</string>
+    <string name="ach_month100_desc">Run 100km in a month.</string>
+    <string name="ach_month150_name">Monthly Monster</string>
+    <string name="ach_month150_desc">Run 150km in a month.</string>
+    <string name="ach_week30_name">Weekly Grinder</string>
+    <string name="ach_week30_desc">Run 30km in a week.</string>
+    <string name="ach_skipday_name">Oops, Day Off</string>
+    <string name="ach_skipday_desc">Skip at least one day.</string>
+    <string name="ach_gaveup_name">Gave Up Mid-Run</string>
+    <string name="ach_gaveup_desc">Finish a run shorter than 5 minutes.</string>
+
+    <!-- Achievement progress units -->
+    <string name="ach_unit_runs">runs</string>
+    <string name="ach_unit_km">km</string>
+    <string name="ach_unit_min_km">min/km</string>
+    <string name="ach_unit_days">days</string>
+    <string name="ach_unit_kcal">kcal</string>
+    <string name="ach_unit_late_runs">late runs</string>
+    <string name="ach_unit_early_runs">early runs</string>
+    <string name="ach_unit_ghost_runs">ghost runs</string>
+    <string name="ach_unit_night_runs">night runs</string>
+    <string name="ach_unit_long_runs">long runs</string>
+    <string name="ach_unit_fast_runs">fast runs</string>
+    <string name="ach_unit_double_days">double-days</string>
+    <string name="ach_unit_dayparts">dayparts</string>
+    <string name="ach_unit_countries">countries</string>
+    <string name="ach_unit_day_gap">day gap</string>
+    <string name="ach_unit_short_runs">short runs</string>
+
+    <!-- Settings -->
+    <string name="settings_per_run_goal_toggle">Per-run distance goal</string>
+    <string name="settings_weekly_goal_toggle">Weekly distance goal</string>
+    <string name="settings_per_run_goal_field">Per-run goal (%1$s)</string>
+    <string name="settings_weekly_goal_field">Weekly goal (%1$s)</string>
+    <string name="settings_goal_alerts_title">Goal alerts</string>
+    <string name="settings_mute_goal_sounds">Mute goal sounds</string>
+    <string name="settings_sound_label">Sound: %1$s</string>
+    <string name="settings_choose_sound">Choose sound</string>
+    <string name="settings_preview">Preview</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="settings_use_miles">Use miles</string>
+    <string name="settings_battery_saver">Battery saver GPS</string>
+    <string name="settings_reminders">Comical reminders</string>
+    <string name="settings_creator_color">Creator waypoint color</string>
+    <string name="color_black">Black</string>
+    <string name="color_purple">Better purple</string>
+    <string name="color_teal">Teal</string>
+    <string name="color_orange">Orange</string>
+    <string name="settings_height_cm">Height (cm)</string>
+    <string name="settings_weight_kg">Weight (kg)</string>
+    <string name="settings_calorie_goal">Calorie goal per run</string>
+    <string name="settings_export_csv">Export run history (CSV)</string>
+    <string name="settings_delete_all">Delete all app data</string>
+    <string name="delete_all_title">Delete all app data?</string>
+    <string name="delete_all_body">This will permanently erase all runs, saved routes, settings, and other stored data, and reset the app to its first-launch state. This cannot be undone.</string>
+    <string name="delete_all_confirm">Reset app</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="sound_muted">Muted</string>
+    <string name="sound_default">Default</string>
+
+    <!-- Snackbar / feedback messages -->
+    <string name="msg_location_denied_settings">Location denied. Enable it in app settings.</string>
+    <string name="msg_location_required">Location permission required</string>
+    <string name="msg_notifications_info">Notification permission enables live run updates.</string>
+    <string name="msg_no_runs_to_export">No runs to export</string>
+    <string name="msg_exported_runs">Exported %1$d runs</string>
+    <string name="msg_export_failed">Export failed: %1$s</string>
+
+    <!-- Notifications -->
+    <string name="channel_live_run">Live Run</string>
+    <string name="channel_goal_alerts">Distance Goal Alerts</string>
+    <string name="channel_goal_alerts_desc">Alerts when you reach a distance goal</string>
+    <string name="channel_run_reminders">Run Reminders</string>
+    <string name="notif_run_active">Run active (%1$s)</string>
+    <string name="notif_run_paused">Run paused (%1$s)</string>
+    <string name="notif_run_active_fallback">Run active</string>
+    <string name="notif_run_tracking_fallback">Tracking your run</string>
+    <string name="notif_run_body">%1$s | %2$s | %3$d kcal</string>
+    <string name="notif_goal_run_title">Run goal reached!</string>
+    <string name="notif_goal_run_body">You hit your %1$s run goal!</string>
+    <string name="notif_goal_week_title">Weekly goal reached!</string>
+    <string name="notif_goal_week_body">You hit your %1$s week goal!</string>
+    <string name="notif_reminder_title">%1$s: move those legs</string>
+    <string-array name="reminder_messages">
+        <item>Your running shoes filed a missing person report.</item>
+        <item>Streak check: your future self wants a tiny run today.</item>
+        <item>One short run today beats 100 excuses tomorrow.</item>
+        <item>Your couch is winning. Are we okay with that?</item>
+        <item>Streak gremlin detected. Run now to scare it away.</item>
+        <item>Plot twist: 15 minutes today keeps your streak legendary.</item>
+        <item>Breaking news: your legs are still accepting appointments.</item>
+        <item>Your playlist is warmed up. Are you?</item>
+        <item>Tiny run, huge hero arc.</item>
+        <item>Run now, brag later.</item>
+        <item>Even a slow jog beats a fast regret.</item>
+        <item>The route misses you. It keeps asking about you.</item>
+        <item>Your sneakers are bored. End their suffering.</item>
+        <item>Future-you just sent a thank-you in advance.</item>
+        <item>Go collect those endorphins before they expire.</item>
+        <item>A short run today keeps the slump away.</item>
+    </string-array>
+
+    <!-- Units -->
+    <string name="unit_km">km</string>
+    <string name="unit_mi">mi</string>
+    <string name="unit_kmh">km/h</string>
+    <string name="unit_mph">mph</string>
+    <string name="unit_min_km">min/km</string>
+    <string name="unit_min_mi">min/mi</string>
+    <string name="unit_min">min</string>
+
+    <!-- Map attributions & licenses -->
     <string name="map_attribution_osm">© OpenStreetMap</string>
     <string name="map_attribution_openfreemap">© OpenFreeMap © OpenMapTiles © OSM</string>
     <string name="map_attribution_esri">© Esri, Maxar, Earthstar Geographics</string>

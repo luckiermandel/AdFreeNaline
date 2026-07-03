@@ -12,7 +12,8 @@ class GoalAlertController(
     context: Context,
     private val settingsRepository: RunSettingsRepository
 ) {
-    private val notifier = GoalAlertNotifier(context.applicationContext)
+    private val appContext = context.applicationContext
+    private val notifier = GoalAlertNotifier(appContext)
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var perRunAlerted = false
@@ -36,8 +37,8 @@ class GoalAlertController(
             perRunAlerted = true
             val label = formatGoalDistance(settings.perRunDistanceGoalKm, settings.distanceUnit)
             notifier.notifyGoalReached(
-                title = "Run goal reached!",
-                message = "You hit your $label run goal!",
+                title = appContext.getString(R.string.notif_goal_run_title),
+                message = appContext.getString(R.string.notif_goal_run_body, label),
                 muted = settings.goalAlertMuted,
                 soundUri = settings.goalAlertSoundUri
             )
@@ -53,8 +54,8 @@ class GoalAlertController(
                     settingsRepository.setLastWeeklyGoalAlertKey(weekKey)
                     val label = formatGoalDistance(settings.weeklyDistanceGoalKm, settings.distanceUnit)
                     notifier.notifyGoalReached(
-                        title = "Weekly goal reached!",
-                        message = "You hit your $label week goal!",
+                        title = appContext.getString(R.string.notif_goal_week_title),
+                        message = appContext.getString(R.string.notif_goal_week_body, label),
                         muted = settings.goalAlertMuted,
                         soundUri = settings.goalAlertSoundUri
                     )

@@ -18,7 +18,7 @@ class GoalAlertNotifier(private val context: Context) {
         }
         val uri = resolveSoundUri(soundUri)
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setSmallIcon(R.drawable.ic_stat_goal)
             .setContentTitle(title)
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
@@ -38,11 +38,12 @@ class GoalAlertNotifier(private val context: Context) {
     }
 
     fun soundLabel(muted: Boolean, soundUri: String?): String {
-        if (muted) return "Muted"
-        val uri = resolveSoundUri(soundUri) ?: return "Default"
+        if (muted) return context.getString(R.string.sound_muted)
+        val default = context.getString(R.string.sound_default)
+        val uri = resolveSoundUri(soundUri) ?: return default
         return runCatching {
-            RingtoneManager.getRingtone(context, uri)?.getTitle(context) ?: "Default"
-        }.getOrDefault("Default")
+            RingtoneManager.getRingtone(context, uri)?.getTitle(context) ?: default
+        }.getOrDefault(default)
     }
 
     private fun playSound(soundUri: String?) {
@@ -62,10 +63,10 @@ class GoalAlertNotifier(private val context: Context) {
     private fun ensureChannel() {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "Distance Goal Alerts",
+            context.getString(R.string.channel_goal_alerts),
             NotificationManager.IMPORTANCE_HIGH
         ).apply {
-            description = "Alerts when you reach a distance goal"
+            description = context.getString(R.string.channel_goal_alerts_desc)
             enableVibration(true)
         }
         notificationManager.createNotificationChannel(channel)

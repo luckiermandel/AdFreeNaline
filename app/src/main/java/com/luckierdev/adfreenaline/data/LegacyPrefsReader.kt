@@ -8,6 +8,7 @@ import com.luckierdev.adfreenaline.RouteMode
 import com.luckierdev.adfreenaline.RunRecord
 import com.luckierdev.adfreenaline.RunSettings
 import com.luckierdev.adfreenaline.SavedRoute
+import com.luckierdev.adfreenaline.ThemeMode
 import org.osmdroid.util.GeoPoint
 
 object LegacyPrefsReader {
@@ -38,7 +39,7 @@ object LegacyPrefsReader {
             return RunSettings()
         }
         return RunSettings(
-            darkMode = prefs.getBoolean("darkMode", true),
+            themeMode = if (prefs.getBoolean("darkMode", true)) ThemeMode.DARK else ThemeMode.LIGHT,
             distanceUnit = DistanceUnit.valueOf(prefs.getString("distanceUnit", DistanceUnit.KM.name)!!),
             showSpeed = prefs.getBoolean("showSpeed", true),
             batterySaver = prefs.getBoolean("batterySaver", false),

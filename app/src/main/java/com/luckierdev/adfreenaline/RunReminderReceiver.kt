@@ -19,35 +19,16 @@ class RunReminderReceiver : BroadcastReceiver() {
         val channelId = "run_reminders"
         val channel = NotificationChannel(
             channelId,
-            "Run Reminders",
+            context.getString(R.string.channel_run_reminders),
             NotificationManager.IMPORTANCE_DEFAULT
         )
         manager.createNotificationChannel(channel)
 
-        val messages = listOf(
-            "Your running shoes filed a missing person report.",
-            "Streak check: your future self wants a tiny run today.",
-            "One short run today beats 100 excuses tomorrow.",
-            "Your couch is winning. Are we okay with that?",
-            "Streak gremlin detected. Run now to scare it away.",
-            "Plot twist: 15 minutes today keeps your streak legendary.",
-            "Reminder #${(intent?.getIntExtra("slot", 0) ?: 0) + 1}/3: go protect that streak.",
-            "Breaking news: your legs are still accepting appointments.",
-            "Your playlist is warmed up. Are you?",
-            "Tiny run, huge hero arc.",
-            "Run now, brag later.",
-            "Even a slow jog beats a fast regret.",
-            "The route misses you. It keeps asking about you.",
-            "Your sneakers are bored. End their suffering.",
-            "Future-you just sent a thank-you in advance.",
-            "Go collect those endorphins before they expire.",
-            "A short run today keeps the slump away."
-        )
-        val msg = messages.random()
+        val msg = context.resources.getStringArray(R.array.reminder_messages).random()
         val notification = NotificationCompat.Builder(context, channelId)
-            .setContentTitle("${context.getString(R.string.app_name)}: move those legs")
+            .setContentTitle(context.getString(R.string.notif_reminder_title, context.getString(R.string.app_name)))
             .setContentText(msg)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setSmallIcon(R.drawable.ic_stat_run)
             .setAutoCancel(true)
             .build()
         manager.notify(4201, notification)
