@@ -9,6 +9,5 @@
 *.jks
 *.keystore
 signing.properties
-signing.properties.example
 signing.env
 RELEASE_CHECKLIST.txt
