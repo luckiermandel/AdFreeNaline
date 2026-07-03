@@ -1,0 +1,1 @@
+Material 3 UI overhaul: bottom navigation, light/dark/system theme, refreshed launcher and splash screen. Improved accessibility, notification icons, and unit display consistency. Added CI, expanded tests, and updated store screenshots.

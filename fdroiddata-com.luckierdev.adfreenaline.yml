@@ -17,9 +17,9 @@ AutoUpdateMode: Version
 UpdateCheckMode: Tags
 
 Builds:
-  - versionName: '1.2'
-    versionCode: 3
-    commit: v1.2
+  - versionName: '1.3'
+    versionCode: 4
+    commit: v1.3
     subdir: .
     gradle:
       - :app:assembleRelease
